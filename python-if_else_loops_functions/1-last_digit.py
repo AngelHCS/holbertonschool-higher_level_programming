@@ -12,4 +12,4 @@ elif last_digit == 0:
 else:
     message = "and is less than 6 and not 0"
 
-print("The string Last digit of", number, "is", last_digit, message)
+print("The Last digit of", number, "is", last_digit, message)
