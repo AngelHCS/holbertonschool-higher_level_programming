@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-argc = len(sys.argv) # assigning value to var
+argc = len(sys.argv)  # assigning value to var.
 idx = 0
 if __name__ == "__main__":
     if argc == 1:
