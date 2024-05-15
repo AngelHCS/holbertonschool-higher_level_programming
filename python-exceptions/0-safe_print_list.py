@@ -1,14 +1,17 @@
 #!/usr/bin/python3
+
 def safe_print_list(my_list=[], x=0):
-    printed_count = 0
+    printed_elements = 0
     try:
         for i in range(x):
-            print(my_list[i], end=" ")
-            printed_count += 1
+            print(my_list[i], end="")
+            printed_elements += 1
     except:
         pass
-    print()
-    return printed_count
+    finally:
+        print()
+    return printed_elements
+
 
 if __name__ == "__main__":
     my_list = [1, 2, 3, 4, 5]
@@ -17,6 +20,5 @@ if __name__ == "__main__":
     print("nb_print: {:d}".format(nb_print))
     nb_print = safe_print_list(my_list, len(my_list))
     print("nb_print: {:d}".format(nb_print))
-    nb_print = safe_print_list(my_list, len(my_list + 2))
+    nb_print = safe_print_list(my_list, len(my_list))
     print("nb_print: {:d}".format(nb_print))
-
