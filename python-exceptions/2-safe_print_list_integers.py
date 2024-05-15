@@ -12,5 +12,5 @@ def safe_print_list_integers(my_list=[], x=0):
             count += 1
     except IndexError:
         pass
-    print("")  # Ensure to move to a new line after printing all integers
+    print("")
     return printed_integers
