@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""Making the class"""
+
+
 class Square():
-    # making the object Square with no attributes
-    pass
+
+    """No attributes on obj"""
+
+
+pass
