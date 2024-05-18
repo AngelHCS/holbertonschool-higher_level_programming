@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""Making the class"""
+# 0-square.py
+
+"""Define a class Square"""
 
 
-class Square():
-
-    """No attributes on obj"""
-
-
-pass
+class Square:
+    """Represent a square"""
+    pass
