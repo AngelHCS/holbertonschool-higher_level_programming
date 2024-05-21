@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # 0-Rectangle.py
 
-""" Define the class square"""
+""" Define the class Rectangle"""
 
 
-class Rectangle0:
-    """ Represent square"""
+class Rectangle:
+    """ Represent Rectangle"""
     pass
