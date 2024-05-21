@@ -1,86 +1,125 @@
-#!/usr/bin/python3
-# test_0-add_integer.py
-
-"""Unit tests for 0-add_integer.py."""
+# 0-add_integer.txt
 
 
-# Define a simple assert function
-def assert_equals(actual, expected):
-    if actual != expected:
-        raise AssertionError(f"Expected {expected}, but got {actual}")
+===========================
+How to Use 0-add_integer.py
+===========================
 
+This module defines an integer addition function ``add_integer(a, b=98)``.
 
-# Import the function to be tested from the file
-add_integer = __import__("0-add_integer").add_integer
+Usage
+=====
 
+``add_integer(...)``` returns the addition of its two arguments. For numbers,
+that value is equivalent to using the ``+`` operator.
 
-class TestAddInteger:
-    """Test case for add_integer function."""
+::
 
-    @staticmethod
-    def test_add_integer():
-        """Test add_integer function."""
-        # Test cases with both integers
-        assert_equals(add_integer(3, 5), 8)
-        assert_equals(add_integer(-3, -5), -8)
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 3)
+    5
 
-        # Test cases with floats
-        assert_equals(add_integer(3.5, 5.5), 8)
-        assert_equals(add_integer(-3.5, -5.5), -8)
+::
 
-        # Test cases with one integer and one float
-        assert_equals(add_integer(3, 5.5), 8)
-        assert_equals(add_integer(-3, -5.5), -8)
+    >>> add_integer(2, -3)
+    -1
 
-        # Test cases with one integer and one non-numeric
-        try:
-            add_integer(3, '5')
-        except TypeError:
-            pass
-        else:
-            raise AssertionError("TypeError not raised for non-numeric input")
+The function also works with floating-point values.
 
-        try:
-            add_integer(3, 'text')
-        except TypeError:
-            pass
-        else:
-            raise AssertionError("TypeError not raised for non-numeric input")
+::
 
-        # Test cases with non-numeric inputs
-        try:
-            add_integer('3', '5')
-        except TypeError:
-            pass
-        else:
-            raise AssertionError("TypeError not raised for non-numeric input")
+    >>> add_integer(2.0, 3.0)
+    5
 
-        try:
-            add_integer('text', '5')
-        except TypeError:
-            pass
-        else:
-            raise AssertionError("TypeError not raised for non-numeric input")
+Note that floats are casted to ints before addition is performed.
 
-        try:
-            add_integer('text', 'more_text')
-        except TypeError:
-            pass
-        else:
-            raise AssertionError("TypeError not raised for non-numeric input")
+::
 
-    @staticmethod
-    def test_default_argument():
-        """Test default argument."""
-        # Test case with only one integer
-        assert_equals(add_integer(3), 101)  # Expected result: 3 + 98 = 101
-        # Test case with only one float
-        assert_equals(add_integer(3.5), 101)  # Expected result: 3 + 98 = 101
+    >>> add_integer(2.9, 0.2)
+    2
 
+::
 
-# Run the tests
-TestAddInteger().test_add_integer()
-TestAddInteger().test_default_argument()
+    >>> add_integer(-2.9, -0.2)
+    -2
 
-print("test passed.")
+Floating and non-floating point values can be combined.
 
+::
+
+    >>> add_integer(2.3, -3)
+    -1
+
+The second argument is optional - default 98
+
+::
+
+    >>> add_integer(2)
+    100
+
+Non-Numbers
+===========
+
+``add_integer()`` expects that both arguments are either integers or floats.
+If either argument is a non-integer and non-float, a TypeError is raised:
+
+::
+
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2, "hello")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2.3, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+If both arguments are non-integers and non-floats, a TypeError message is printed for the first argument.
+
+::
+
+    >>> add_integer("hello", "there")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+The function will fail if infinity is provided.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+     
+
+::
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+And with NaN numbers.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
