@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#3-say_my_name.py
 def say_my_name(first_name, last_name=""):
     # Check if first_name and last_name are strings otherwise, typeError
     if not isinstance(first_name, str):
