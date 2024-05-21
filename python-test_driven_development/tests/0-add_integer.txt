@@ -1,0 +1,86 @@
+#!/usr/bin/python3
+# test_0-add_integer.py
+
+"""Unit tests for 0-add_integer.py."""
+
+
+# Define a simple assert function
+def assert_equals(actual, expected):
+    if actual != expected:
+        raise AssertionError(f"Expected {expected}, but got {actual}")
+
+
+# Import the function to be tested from the file
+add_integer = __import__("0-add_integer").add_integer
+
+
+class TestAddInteger:
+    """Test case for add_integer function."""
+
+    @staticmethod
+    def test_add_integer():
+        """Test add_integer function."""
+        # Test cases with both integers
+        assert_equals(add_integer(3, 5), 8)
+        assert_equals(add_integer(-3, -5), -8)
+
+        # Test cases with floats
+        assert_equals(add_integer(3.5, 5.5), 8)
+        assert_equals(add_integer(-3.5, -5.5), -8)
+
+        # Test cases with one integer and one float
+        assert_equals(add_integer(3, 5.5), 8)
+        assert_equals(add_integer(-3, -5.5), -8)
+
+        # Test cases with one integer and one non-numeric
+        try:
+            add_integer(3, '5')
+        except TypeError:
+            pass
+        else:
+            raise AssertionError("TypeError not raised for non-numeric input")
+
+        try:
+            add_integer(3, 'text')
+        except TypeError:
+            pass
+        else:
+            raise AssertionError("TypeError not raised for non-numeric input")
+
+        # Test cases with non-numeric inputs
+        try:
+            add_integer('3', '5')
+        except TypeError:
+            pass
+        else:
+            raise AssertionError("TypeError not raised for non-numeric input")
+
+        try:
+            add_integer('text', '5')
+        except TypeError:
+            pass
+        else:
+            raise AssertionError("TypeError not raised for non-numeric input")
+
+        try:
+            add_integer('text', 'more_text')
+        except TypeError:
+            pass
+        else:
+            raise AssertionError("TypeError not raised for non-numeric input")
+
+    @staticmethod
+    def test_default_argument():
+        """Test default argument."""
+        # Test case with only one integer
+        assert_equals(add_integer(3), 101)  # Expected result: 3 + 98 = 101
+        # Test case with only one float
+        assert_equals(add_integer(3.5), 101)  # Expected result: 3 + 98 = 101
+
+
+# Run the tests
+TestAddInteger().test_add_integer()
+TestAddInteger().test_default_argument()
+
+print("test passed.")
+
