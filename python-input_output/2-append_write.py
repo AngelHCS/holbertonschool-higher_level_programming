@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-# 2-append_write.py
+# 2-append_write.pyi
+
+""" Function that appends text to file and returns char added as stdout"""
+
 
 def append_write(filename="", text=""):
     """Append text to a file and return chars added"""
