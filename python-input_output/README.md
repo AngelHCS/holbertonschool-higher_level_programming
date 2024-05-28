@@ -1,1 +1,1 @@
-Testing stdin and stdout on python.
+Testing input and output on python.
