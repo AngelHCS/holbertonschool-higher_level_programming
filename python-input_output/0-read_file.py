@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # 0-read_file.py
+"""reads file and prints it to stdout"""
 def read_file(filename=""):
 
     """
