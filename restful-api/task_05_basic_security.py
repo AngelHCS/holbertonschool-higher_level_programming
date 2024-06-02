@@ -36,7 +36,8 @@ def verify_password(username, password):
         password (str): The password.
 
     Returns:
-        dict or None: The user's information if credentials are correct, None otherwise.
+        dict or None: The user's information if credentials are correct
+        Otherwise none
     """
     user = users.get(username)
     if user and check_password_hash(user["password"], password):
@@ -132,4 +133,3 @@ def handle_needs_fresh_token_error(err):
 
 if __name__ == '__main__':
     app.run()
-
