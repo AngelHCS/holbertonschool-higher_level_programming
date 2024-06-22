@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 """
-    Connects to a MySQL database and retrieves the list of states from a table called 'states'.
+Connects to a MySQL database and retrieves
+the list of states from a table called 'states'.
 
     Command-line arguments:
     - sys.argv[1]: MySQL username
     - sys.argv[2]: MySQL password
     - sys.argv[3]: MySQL database name
 
-    The script connects to the local MySQL server using the provided credentials,
-    executes a query to fetch all states and prints each state's ID and name.
+The script connects to the local MySQL server using the provided credentials,
+executes a query to fetch all states and prints each state's ID and name.
 
     Dependencies:
     - MySQLdb: Python interface to MySQL
