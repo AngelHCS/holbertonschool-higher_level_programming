@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects from hbtn_0e_6_usa
+Script that changes the name of a State object from hbtn_0e_6_usa
 """
 
 import sys
@@ -20,12 +20,13 @@ if __name__ == "__main__":
     # Create a Session instance
     session = Session()
 
-    # Query all State objects ordered by id
-    states = session.query(State).order_by(State.id).all()
+    # Query the State object with id = 2
+    state_to_update = session.query(State).filter_by(id=2).first()
 
-    # Print results in the desired format
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    # Check if the state exists, and update its name
+    if state_to_update:
+        state_to_update.name = "New Mexico"
+        session.commit()
 
     # Close the session
-    session.close():
+    session.close()

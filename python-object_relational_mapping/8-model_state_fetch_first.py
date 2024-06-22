@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects from hbtn_0e_6_usa
+Script that prints the first State object from  hbtn_0e_6_usa
 """
 
 import sys
@@ -20,12 +20,14 @@ if __name__ == "__main__":
     # Create a Session instance
     session = Session()
 
-    # Query all State objects ordered by id
-    states = session.query(State).order_by(State.id).all()
+    # Query the first State object ordered by id
+    first_state = session.query(State).order_by(State.id).first()
 
-    # Print results in the desired format
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    # Print the result or "Nothing" if no state is found
+    if first_state:
+        print("{}: {}".format(first_state.id, first_state.name))
+    else:
+        print("Nothing")
 
     # Close the session
-    session.close():
+    session.close()

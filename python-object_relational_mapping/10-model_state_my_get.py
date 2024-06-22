@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects from hbtn_0e_6_usa
+Script that prints the State object with
+the name passed as argument from hbtn_0e_6_usa
 """
 
 import sys
@@ -20,12 +21,17 @@ if __name__ == "__main__":
     # Create a Session instance
     session = Session()
 
-    # Query all State objects ordered by id
-    states = session.query(State).order_by(State.id).all()
+    # Get the state name to search
+    state_name = sys.argv[4]
 
-    # Print results in the desired format
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    # Query the State object with the given name
+    state = session.query(State).filter(State.name == state_name).first()
+
+    # Print the result
+    if state:
+        print("{}".format(state.id))
+    else:
+        print("Not found")
 
     # Close the session
-    session.close():
+    session.close()
