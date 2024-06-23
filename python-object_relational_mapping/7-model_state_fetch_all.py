@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 Script that lists all State objects from hbtn_0e_6_usa
 """
